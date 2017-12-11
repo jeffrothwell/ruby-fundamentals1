@@ -6,7 +6,7 @@ loop do
 
   mode = gets.chomp
 
-  while mode != "walk" && mode != "run" && mode != "go home"
+  while mode != "walk" && mode != "run" && mode != "go home" && mode != "home"
     puts "Invalid input, try again (only \"walk\"/\"run\"/\"go home\" please)"
     mode = gets.chomp
   end
@@ -26,6 +26,8 @@ loop do
 
   puts "Distance from home is #{dist}\nEnergy level is #{energy}"
 
-  break if mode == "go home"
+  break if mode == "go home" || mode == "home"
 
 end
+
+puts "Thanks for playing, now go take a shower!"
