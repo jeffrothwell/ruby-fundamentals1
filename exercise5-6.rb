@@ -5,6 +5,11 @@ loop do
 
   mode = gets.chomp
 
+  while mode != "walk" && mode != "run" && mode != "go home"
+    puts "Invalid input, try again (only \"walk\"/\"run\"/\"go home\" please)"
+    mode = gets.chomp
+  end
+
   if mode == "walk"
     dist += 1
   elsif mode == "run"
