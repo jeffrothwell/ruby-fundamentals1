@@ -1,22 +1,26 @@
 # start them off with some arbitrary amount of energy at distance zero
 dist = 0
 energy = 10
+
+#set up a counter to trigger hints
 nstep = 0
+hintgiven = false
 
 loop do
   # instructions for the user and get their input, and chomp off that newline
   if nstep < 4
     #only full instructions first four times
     puts "Would you like to walk, run or go home? (enter only \"walk\"/\"run\"/\"go home\" please)"
-  elsif nstep == 4
+  elsif nstep >= 4 && hintgiven == false
     #hint at some other actions
     puts "You're really workin\' it!\nkeep going or try some other words like hop or twirl"
-  elsif energy >= 16
+    hintgiven = true
+  elsif energy >= 14
     puts "Whoa, you've got so much energy you could fly - maybe it's time to try"
   elsif dist >= 50 && energy < 10
     #some fun stuff if they've been going for a while
     puts "Easy there, Forrest. don't give yourself a heart attack, you're a long way from home"
-  elsif dist >= 50 && energy > 20
+  elsif dist >= 50 && energy > 12
     #you'd have to play this game a long time to build up these stats
     puts "You've been exercising for a long time\nand probably twirling a lot\nI'm bored. Just go home already"
   else
@@ -66,8 +70,8 @@ loop do
     energy -= 2
     puts "Let's go to the hop!"
   elsif mode == "twirl"
-    energy += 3
-    puts "All this twirling is making me dizzy...\nAnd I love it!"
+    energy += 6
+    puts "Twirling makes dizzy makes happy!"
   elsif mode == "fly"
     dist += 20
     energy -= 14
