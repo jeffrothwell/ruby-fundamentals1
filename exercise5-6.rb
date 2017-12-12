@@ -7,7 +7,8 @@ nstep = 0
 hintgiven = false
 
 loop do
-  # instructions for the user and get their input, and chomp off that newline
+  # instructions for the user and get their input with some different messages
+  # that can show up depending where they are in the game
   if nstep < 4
     #only full instructions first four times
     puts "Would you like to walk, run or go home? (enter only \"walk\"/\"run\"/\"go home\" please)"
@@ -27,10 +28,10 @@ loop do
     puts "Walk, run or go home?"
   end
 
+  #get them to type in a string
   mode = gets.chomp
 
-# this handles invalid input, I modified it to allow them to enter home and still work the same as go home
-# I don't tell them home is ok to type, but would look silly if that returned an error message
+# this handles invalid input, I modified it to account for a bunch of fun commands I added after
   while mode != "walk" && mode != "run" && mode != "go home" && mode != "home" && mode != "hop" && mode != "twirl" && mode != "fly"
     puts "Invalid input, try again (only \"walk\"/\"run\"/\"go home\" please)"
     mode = gets.chomp
@@ -78,12 +79,14 @@ loop do
     puts "Fly me to the moon let me play among the stars\nYou are now tired and far from home"
   end
 
+# they only other thing they could have typed at this point would be 'home' or 'go home'
 # even if they want to go home, I still want to reprint for them their distance and energy
   puts "Distance from home is #{dist}\nEnergy level is #{energy}"
 
 #get out of the loop if they type go home or just home
   break if mode == "go home" || mode == "home"
-# increase nstep
+
+# otherwise increase nstep and go back to the top
   nstep += 1
 end
 
@@ -91,6 +94,7 @@ end
 # they should probably take a shower.  winky face...
 if dist < 20
   puts "Thanks for playing, now take a shower!\n"
+# if they've gone really far
 else
   puts "Have fun getting home, we ain't in Kansas no more, Dorothy!"
 end
